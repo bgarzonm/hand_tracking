@@ -20,8 +20,7 @@ while True:
         break
 
     result = hands.process(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
-
-    # print(result.multi_hand_landmarks)
+    
     if result.multi_hand_landmarks:
         for hand_landmarks in result.multi_hand_landmarks:
             mp_drawing_utils.draw_landmarks(
@@ -35,6 +34,7 @@ while True:
             h, w, c = img.shape
             cx, cy = int(landmark.x * w), int(landmark.y * h)
             print(id, cx, cy)
+            
     current_time = time.time()
     FPS = int(1 / (current_time - prev_time))
     prev_time = current_time
